@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRAHMO — India Clinical AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="logo">B</div>
+    <div>
+      <h1>BRAHMO Clinical AI</h1>
+      <p>Apollo Hospitals Chennai · RSSDI + CSI Guidelines</p>
+    </div>
+  </div>
+  <span class="header-badge">India-Specific · Powered by Llama 3.3</span>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Patients</div>
+      <div id="patientList"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="ask-area">
+      <div class="selected-info" id="selectedInfo">
+        Select a patient from the sidebar to begin
+      </div>
+      <button class="ask-btn" id="askBtn" disabled onclick="askAI()">
+        Get Clinical Recommendation →
+      </button>
+    </div>
+
+    <div class="content">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🏥</div>
+        <p>Select a patient to get India-specific clinical recommendations</p>
+        <p style="font-size:12px">RSSDI · CSI · Indian drug brands · ₹ prices</p>
+      </div>
+      <div id="resultsArea" style="display:none;flex-direction:column;gap:16px"></div>
+    </div>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
