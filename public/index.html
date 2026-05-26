@@ -27,6 +27,12 @@
       <div id="patientList"></div>
     </div>
   </aside>
+  <div style="padding:16px;border-top:1px solid var(--border)">
+  <button onclick="document.getElementById('customModal').style.display='flex'" 
+    style="width:100%;background:var(--bg3);color:var(--text2);border:1px solid var(--border);padding:9px;border-radius:8px;font-size:12px;cursor:pointer">
+    + Add Custom Patient
+  </button>
+</div>
 
   <main class="main">
     <div class="ask-area">
@@ -51,5 +57,32 @@
 </div>
 
 <script src="app.js"></script>
+<div id="customModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center">
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;width:480px;max-width:90vw">
+    <h3 style="color:var(--text);margin-bottom:16px;font-size:15px">Add Custom Patient</h3>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <input id="cp-name" placeholder="Name / description" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <input id="cp-age" placeholder="Age" type="number" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+        <select id="cp-sex" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <input id="cp-conditions" placeholder="Conditions (e.g. T2DM, Hypertension)" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+      <input id="cp-meds" placeholder="Current medications (comma separated)" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+      <input id="cp-allergy" placeholder="Allergies (or NKDA)" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <input id="cp-creatinine" placeholder="Creatinine (mg/dL)" type="number" step="0.1" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+        <input id="cp-hba1c" placeholder="HbA1c %" type="number" step="0.1" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+      </div>
+      <input id="cp-insurance" placeholder="Insurance (or NONE)" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px">
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button onclick="submitCustomPatient()" style="flex:1;background:var(--blue);color:white;border:none;padding:10px;border-radius:8px;font-size:13px;cursor:pointer">Analyse Patient</button>
+        <button onclick="document.getElementById('customModal').style.display='none'" style="background:var(--bg3);color:var(--text2);border:1px solid var(--border);padding:10px 16px;border-radius:8px;font-size:13px;cursor:pointer">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -1,7 +1,10 @@
 function composePrompt(patient, safetyResult, drugs, guidelines) {
-const drugList = drugs.map(d =>
-  `- ${d.generic_name} (${d.brand_name}, ${d.mrp_price}, NLEM: ${d.nlem_status ? 'Yes' : 'No'}${d.source_site ? ', Source: ' + d.source_site : ''})`
-).join('\n');
+const drugList = drugs.map(d => {
+  let stockStatus = '';
+  if (d.in_stock === true) stockStatus = ', Apollo Stock: Available';
+  else if (d.in_stock === false) stockStatus = ', Apollo Stock: NOT STOCKED — patient buys outside';
+  return `- ${d.generic_name} (${d.brand_name}, ${d.mrp_price}, NLEM: ${d.nlem_status ? 'Yes' : 'No'}${stockStatus})`;
+}).join('\n');
 
   const guidelineList = guidelines.map(g =>
     `- [${g.source} ${g.evidence_level}] ${g.recommendation}`
